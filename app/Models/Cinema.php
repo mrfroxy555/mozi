@@ -1,0 +1,26 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class Cinema extends Model
+{
+    protected $fillable = [
+        'name',
+        'capacity',
+        'rows',
+        'seats_per_row',
+    ];
+
+    public function seats(): HasMany
+    {
+        return $this->hasMany(Seat::class);
+    }
+
+    public function screenings(): HasMany
+    {
+        return $this->hasMany(Screening::class);
+    }
+}
